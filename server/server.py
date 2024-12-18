@@ -3,7 +3,7 @@ from websockets import serve
 import websockets
 from formatting import format
 
-async def echo(websocket):
+async def receive_key(websocket):
     try:
         async for message in websocket:
             format(message)
@@ -13,7 +13,7 @@ async def echo(websocket):
         print("Connection closed unexpectedly.")
 
 async def main():
-    async with serve(echo, "localhost", 8765, ping_interval=None, ping_timeout=None) as server:
+    async with serve(receive_key, "localhost", 8765, ping_interval=None, ping_timeout=None) as server:
         await server.serve_forever()
 
 if __name__ == "__main__":
