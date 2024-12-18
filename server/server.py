@@ -1,12 +1,12 @@
 import asyncio
 from websockets import serve
 import websockets
-import formatting
+from formatting import format
 
 async def echo(websocket):
     try:
         async for message in websocket:
-            formatting.format(message)
+            format(message)
     except websockets.exceptions.ConnectionClosedOK:
         print("Connection closed normally (1000 OK).")
     except websockets.exceptions.ConnectionClosed:
