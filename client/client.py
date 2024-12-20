@@ -16,7 +16,6 @@ async def check_internet_connection():
 
         return result.returncode == 0
     except Exception as e:
-        print(f"Error checking internet connection: {e}")
         return False
 
 async def send_data(data):
