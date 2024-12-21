@@ -1,15 +1,17 @@
 from text_file_processors.file_io import append_file, read_and_write_file
 
-excluded_keys = ["caps lock", "shift", "right shift", "ctrl", "right ctrl", "alt", "right alt", "up", "right", "down", "left", "home", "end", "page down", "page up", "delete", "print screen", "insert"]
-space_keys = ["space", "tab"]
-break_line = ["enter"]
+EXCLUDED_KEYS = {"caps lock", "shift", "right shift", "ctrl", "right ctrl", "alt", "right alt", 
+                 "up", "right", "down", "left", "home", "end", "page down", "page up", 
+                 "delete", "print screen", "insert"}
+SPACE_KEYS = {"space", "tab"}
+BREAK_LINE_KEYS = {"enter"}
 
 def format(message, log_save_location):
-    if message not in excluded_keys:
-        if message in space_keys:
+    if message not in EXCLUDED_KEYS:
+        if message in SPACE_KEYS:
             append_file(" ", log_save_location)
 
-        elif message in break_line:
+        elif message in BREAK_LINE_KEYS:
             append_file("\n", log_save_location)
 
         elif message == "backspace":
