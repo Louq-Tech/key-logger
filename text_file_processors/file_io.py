@@ -1,10 +1,10 @@
-def append_file(message):
-    with open("./logs.txt", 'a') as file:
+def append_file(message, log_save_location):
+    with open(log_save_location, 'a') as file:
         file.write(message)
 
 # This function is for backspace feature
-def read_and_write_file():
-    with open("./logs.txt", 'r') as file:
+def read_and_write_file(log_save_location):
+    with open(log_save_location, 'r') as file:
         content = file.read()
         if content:
             content = content[:-1]
