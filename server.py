@@ -2,7 +2,7 @@ import os
 import asyncio
 from websockets import serve
 import websockets
-from text_file_processors.formatting import format
+from text_file_processors.formatting import process_key_message
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,7 +10,7 @@ load_dotenv()
 async def receive_key(websocket):
     try:
         async for message in websocket:
-            format(message, os.getenv("CLOUD_LOG_STORAGE_AREA"))
+            process_key_message(message, os.getenv("CLOUD_LOG_STORAGE_AREA"))
     except websockets.exceptions.ConnectionClosedOK:
         print("Connection closed normally (1000 OK).")
     except websockets.exceptions.ConnectionClosed:
